@@ -1,35 +1,13 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<!-- General meta -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-		{% if page.indexing == false %}
-			<meta name="robots" content="noindex">
-		{% endif %}
-
-		{% if page.collectionpage %}
-			{% seo title=false %}
-
-			{% assign collectiondata = site.collections | where: "label", page.collectionpage | first %}
-			<title>{{ collectiondata.title }} - {{ site.title }}</title>
-			<meta property="og:title" content="{{ collectiondata.title }}">
-			<meta name="description" content="{{ collectiondata.description }}">
-			<meta property="og:description" content="{{ collectiondata.description }}">
-		{% else %}
-			{% seo %}
-		{% endif %}
-
-    <link rel="stylesheet" href="{{ "/assets/styles.css" | relative_url }}">
-		{% include site-favicons.html %}
-	</head>
-	<body class="layout-{{ page.layout }}  {{ page.title | slugify }}">
-		{% include site-icons.svg %}
-
-		{{ content }}
-
-			<script type="text/javascript" src="{{ "/assets/scripts/xuehua.js" | relative_url }}"></script>
-			<div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100001;"><canvas width="1903" height="950"></canvas></div>
-
-	</body>
+    {% include head.html %}
+    <body>
+        {% include navbar.html %}
+        {% include top.html %}
+        {% include about.html %}
+        {% include instagram.html %}
+        {% include contacts.html %}
+        {% include copyright.html %}
+        {% include tracking.html %}
+    </body>
 </html>
